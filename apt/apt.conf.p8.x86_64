@@ -1,0 +1,15 @@
+/*
+ * This is the main configuration file for the APT suite of tools,
+ * see apt.conf(5) for details.
+ */
+
+Dir::Etc::main "/dev/null";
+Dir::Etc::parts "/var/empty";
+Dir::Etc::SourceParts "/var/empty";
+
+Dir::Etc::sourcelist "/home/shaba/Docker/docker-brew-alt/apt/sources.list.p8.x86_64";
+
+// Debug::pkgMarkInstall "true";
+// Debug::pkgProblemResolver "true";
+
+

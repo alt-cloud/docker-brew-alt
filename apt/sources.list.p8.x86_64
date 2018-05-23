@@ -1,0 +1,10 @@
+
+#rpm http://ftp.altlinux.org/pub/distributions/ALTLinux p8/branch/x86_64 classic
+#rpm http://ftp.altlinux.org/pub/distributions/ALTLinux p8/branch/noarch classic
+
+# local mount or nfs
+rpm file:/ALT/p8 x86_64 classic
+rpm file:/ALT/p8 noarch classic
+
+# test task from build server
+#rpm http://git.altlinux.org/repo/XXXXXX x86_64 task

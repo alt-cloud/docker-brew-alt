@@ -88,6 +88,8 @@ MAINTAINER \\
 
 ADD alt-${1}-${arch}-${DATE}.tar.xz /
 
+# overwrite this with 'CMD []' in a dependent Dockerfile
+CMD ["/bin/bash"]
 EOF
 
     done

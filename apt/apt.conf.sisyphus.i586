@@ -7,7 +7,7 @@ Dir::Etc::main "/dev/null";
 Dir::Etc::parts "/var/empty";
 Dir::Etc::SourceParts "/var/empty";
 
-Dir::Etc::sourcelist "/home/shaba/Docker/docker-brew-alt/apt/sources.list.sisyphus.i586";
+Dir::Etc::sourcelist "/home/shaba/docker/docker-brew-alt/apt/sources.list.sisyphus.i586";
 
 // Dir::Etc::preferences "/home/nightly/apt/preferences";
 

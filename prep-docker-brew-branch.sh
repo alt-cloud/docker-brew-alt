@@ -45,7 +45,7 @@ f_clean_docker_images ()
     done
 }
 
-if ! [[ "${1}" =~ [p8|sisyphus] ]];
+if ! [[ "${1}" =~ (p8|sisyphus) ]];
 then
     printf "ERROR: ALT_RELEASE missing or invalid\n"
     f_help

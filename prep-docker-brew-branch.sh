@@ -45,7 +45,8 @@ f_clean_docker_images ()
     done
 }
 
-if ! [[ "${1}" =~ (p8|sisyphus) ]];
+ALT_RELEASE="${1-}"
+if ! [[ "$ALT_RELEASE" =~ (p8|sisyphus) ]];
 then
     printf "ERROR: ALT_RELEASE missing or invalid\n"
     f_help
@@ -68,7 +69,7 @@ pushd ${temp_dir} &> /dev/null
     for arch in i586 x86_64 aarch64
     do
         make \
-        APTCONF="${PROGDIR}/apt/apt.conf.${1}.${arch}" \
+        APTCONF="${PROGDIR}/apt/apt.conf.${ALT_RELEASE}.${arch}" \
         CLEAN=1 \
         QUIET=1 \
         NICE=1 \
@@ -78,7 +79,7 @@ pushd ${temp_dir} &> /dev/null
         ve/docker.tar.xz
 
         mkdir -p "${workspace_dir}/${arch}"
-        mv "${workspace_dir}/out/docker-${DATE}-${arch}.tar.xz" "${workspace_dir}/${arch}/alt-${1}-${arch}-${DATE}.tar.xz"
+        mv "${workspace_dir}/out/docker-${DATE}-${arch}.tar.xz" "${workspace_dir}/${arch}/alt-${ALT_RELEASE}-${arch}-${DATE}.tar.xz"
         cat > ${workspace_dir}/${arch}/Dockerfile <<EOF
 FROM scratch
 
@@ -86,7 +87,7 @@ MAINTAINER \\
 [Alexey Shabalin <shaba@altlinux.org>] \\
 [Gleb Fotengauer-Malinovskiy <glebfm@altlinux.org>]
 
-ADD alt-${1}-${arch}-${DATE}.tar.xz /
+ADD alt-${ALT_RELEASE}-${arch}-${DATE}.tar.xz /
 
 # overwrite this with 'CMD []' in a dependent Dockerfile
 CMD ["/bin/bash"]

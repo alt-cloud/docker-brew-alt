@@ -1,7 +1,0 @@
-
-rpm http://ftp.altlinux.org/pub/distributions/ALTLinux/Sisyphus aarch64 classic
-rpm http://ftp.altlinux.org/pub/distributions/ALTLinux/Sisyphus noarch classic
-
-# local mount or nfs
-#rpm file:/ALT/Sisyphus i586 classic
-#rpm file:/ALT/Sisyphus noarch classic

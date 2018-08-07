@@ -28,6 +28,16 @@ f_ctrl_c() {
 # trap int (ctrl-c)
 trap f_ctrl_c SIGINT
 
+f_arches_for_repo() {
+    repo=$1
+    if [ "$repo" = p8 ]
+    then
+        echo 'i586 x86_64'
+    else
+        echo 'i586 x86_64 aarch64'
+    fi
+}
+
 f_help() {
     cat <<EOF
 
@@ -79,7 +89,7 @@ mkdir -p "$out_dir"
     # build image
     cd mkimage-profiles
 
-    for arch in i586 x86_64 aarch64
+    for arch in $(f_arches_for_repo "$ALT_RELEASE")
     do
         make \
         APTCONF="${temp_dir}/apt/apt.conf.${ALT_RELEASE}.${arch}" \

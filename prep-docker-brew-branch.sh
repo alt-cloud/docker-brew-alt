@@ -58,14 +58,6 @@ EOF
 
 uuidgen >/dev/null
 
-f_clean_docker_images ()
-{
-    for i in $(sudo docker images -f 'dangling=true' -q);
-    do
-        sudo docker rmi $i;
-    done
-}
-
 ALT_RELEASE="${1-}"
 if ! [[ "$ALT_RELEASE" =~ (p8|sisyphus) ]];
 then

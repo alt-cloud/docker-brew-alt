@@ -24,10 +24,9 @@ Docker Base Image Build process
      `apt-get install hasher mkimage`
    3. Install livecd-qemu-arch and qemu-user-static for cross-build for aarch64.
      `apt-get install livecd-qemu-arch qemu-user-static`
-      Run `register-qemu-aarch64` for register aarch64 in binfmt.
+      Run (after every reboot) `register-qemu-aarch64` for register aarch64 in binfmt.
    4. Add non-root user for hasher.
      `hasher-useradd joe`
-   5. Edit sources list for APT in apt dir.
 
 2. Run the `./prep-docker-brew-branch.sh` script as non-root user, this will build a new base image.
 
@@ -53,54 +52,24 @@ Docker Base Image Build process
    following:
 
 ```
-$ tree /tmp/.private/joe/tmp.e3Mw8oMhta/workspace
-|--aarch64
-|  |--Dockerfile
-|  `--alt-p8-aarch64-20180522.tar.xz
-|--x86_64
-|  |--Dockerfile
-|  `--alt-p8-x86_64-20180522.tar.xz
-|--i586
-|  |--Dockerfile
-|  `--alt-p8-i586-20180522.tar.xz
+$ git show --stat p8
+commit a3fd4f897bda9424ac515dccfc33c0a46da96a64
+Author: Mikhail Gordeev <obirvalger@altlinux.org>
+Date:   17 hours ago
+
+    Update altlinux p8 - 20180814
+
+ i586/Dockerfile                      |  10 ++++++++++
+ i586/alt-p8-i586-20180814.tar.xz     | Bin 0 -> 23896040 bytes
+ x86_64/Dockerfile                    |  10 ++++++++++
+ x86_64/alt-p8-x86_64-20180814.tar.xz | Bin 0 -> 24017716 bytes
+ 4 files changed, 20 insertions(+)
 ```
 
 2. Force push to alt-cloud/docker-brew-alt on github in order to overwrite
    history so we aren’t storing giant piles of tarballs in git.
 
 ```
-# EXAMPLE
-
-# The value of work_dir comes from the previous output of the
-# ./prep-docker-brew-branch.sh script in Step 1
-$ work_dir=/tmp/.private/joe/tmp.e3Mw8oMhta/workspace
-
-$ git checkout master
-
-$ git branch -D p8
-
-$ git checkout --orphan p8
-
-$ git rm --cached -r .
-
-$ rm -fr ./*
-
-## Move in the files from your working dir
-
-$ mv ${work_dir}/* .
-
-$ git add .
-
-$ git commit -m "Update altlinux p8 - 20180522"
-[p8 (root-commit) 4c2cc8e] Update altlinux p8 - 20180522
- 6 files changed, 24 insertions(+)
- create mode 100644 aarch64/Dockerfile
- create mode 100644 aarch64/alt-p8-aarch64-20180522.tar.xz
- create mode 100644 i586/Dockerfile
- create mode 100644 i586/alt-p8-i586-20180522.tar.xz
- create mode 100644 x86_64/Dockerfile
- create mode 100644 x86_64/alt-p8-x86_64-20180522.tar.xz
-
 $ git push -f origin p8
 ```
 

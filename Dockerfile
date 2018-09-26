@@ -2,7 +2,8 @@ FROM scratch
 
 MAINTAINER \
 [Alexey Shabalin <shaba@altlinux.org>] \
-[Gleb Fotengauer-Malinovskiy <glebfm@altlinux.org>]
+[Gleb Fotengauer-Malinovskiy <glebfm@altlinux.org>] \
+[Mikhail Gordeev <obirvalger@altlinux.org]
 
 ENV container=oci
 ADD alt-sisyphus-x86_64-20180730.tar.xz /

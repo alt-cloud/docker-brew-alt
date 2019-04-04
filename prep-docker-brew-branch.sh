@@ -104,6 +104,8 @@ MAINTAINER \\
 
 ADD alt-${ALT_RELEASE}-${arch}-${DATE}.tar.xz /
 
+RUN true > /etc/security/limits.d/50-defaults.conf
+
 # overwrite this with 'CMD []' in a dependent Dockerfile
 CMD ["/bin/bash"]
 EOF

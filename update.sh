@@ -28,9 +28,9 @@ f_arches_for_branch() {
         echo 'i586 x86_64'
     elif [ "$branch" = p9 ]
     then
-        echo 'i586 x86_64 aarch64'
+        echo 'i586 x86_64 aarch64 ppc64le'
     else
-        echo 'i586 x86_64 aarch64'
+        echo 'i586 x86_64 aarch64 ppc64le'
     fi
 }
 
@@ -71,7 +71,7 @@ EOF
     git rm -r .
 
     git add .
-    git commit -m "Update altlinux $branch"
+    git commit -m "Update ALT Linux $branch"
 
     git checkout master
 done

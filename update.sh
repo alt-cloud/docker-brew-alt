@@ -1,6 +1,6 @@
 #!/bin/bash -exu
 
-URL=http://10.9.202.11/proto/pub/distributions/ALTLinux/images
+URL=http://ftp.altlinux.org/pub/distributions/ALTLinux/images
 IMAGE=rootfs-minimal
 
 temp_dir=

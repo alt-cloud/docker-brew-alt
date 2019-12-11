@@ -6,7 +6,7 @@ MAINTAINER \
 [Mikhail Gordeev <obirvalger@altlinux.org]
 
 ENV container=oci
-ADD alt-sisyphus-x86_64-20180730.tar.xz /
+ADD alt.tar.xz /
 
 # Labels added in support of osbs, per https://github.com/projectatomic/ContainerApplicationGenericLabels
 LABEL name="ALT Base Image" \

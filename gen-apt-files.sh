@@ -6,8 +6,8 @@
 
 ROOT="file:///space/ALT" # Place with ALT repositories
 #ROOT="http://ftp.altlinux.org/pub/distributions/ALTLinux"
-ARCHES="i586 x86_64 aarch64"
-REPOS="p8 Sisyphus"
+ARCHES="i586 x86_64 aarch64 ppc64le"
+REPOS="p8 p9 Sisyphus"
 APT_DIR="${1:-apt}"
 
 mkdir -p "$APT_DIR"

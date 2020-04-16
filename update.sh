@@ -1,6 +1,10 @@
 #!/bin/bash -exu
 
-URL=http://ftp.altlinux.org/pub/distributions/ALTLinux/images
+if [ -n "${1-}" ]; then
+    URL="$1"
+else
+    URL=http://ftp.altlinux.org/pub/distributions/ALTLinux/images
+fi
 IMAGE=rootfs-minimal
 
 temp_dir=

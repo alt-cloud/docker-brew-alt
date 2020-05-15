@@ -57,7 +57,6 @@ FROM scratch
 
 MAINTAINER \\
 [Alexey Shabalin <shaba@altlinux.org>] \\
-[Gleb Fotengauer-Malinovskiy <glebfm@altlinux.org>] \\
 [Mikhail Gordeev <obirvalger@altlinux.org]
 
 ADD alt-$branch_lower-$arch.tar.xz /

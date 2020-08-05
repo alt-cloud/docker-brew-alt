@@ -4,6 +4,8 @@
 # repositories. Save it in the directory `apt' by default, but it can be
 # changed using firt command line argument.
 
+ADD_BRANCH= # Add /branch to url
+BRANCH_WORD= # Branch word: "" or "/branch"
 ROOT="file:///space/ALT" # Place with ALT repositories
 #ROOT="http://ftp.altlinux.org/pub/distributions/ALTLinux"
 ARCHES="i586 x86_64 aarch64 ppc64le"
@@ -19,6 +21,13 @@ do
     for REPO in $REPOS
     do
         REPO_NORM="$(echo "$REPO" | tr '[:upper:]' '[:lower:]')"
+        if [ -n "$ADD_BRANCH" ]; then
+            if [ "$REPO" = Sisyphus ]; then
+                BRANCH_WORD=
+            else
+                BRANCH_WORD=/branch
+            fi
+        fi
         cat > "$APT_DIR/apt.conf.${REPO_NORM}.${ARCH}" <<EOF
 Dir::Etc::main "/dev/null";
 Dir::Etc::parts "/var/empty";
@@ -28,8 +37,8 @@ Dir::Etc::preferences "/dev/null";
 Dir::Etc::preferencesparts "/var/empty";
 EOF
         cat >  "$APT_DIR/sources.list.${REPO_NORM}.${ARCH}" <<EOF
-rpm $ROOT/$REPO $ARCH classic
-rpm $ROOT/$REPO noarch classic
+rpm $ROOT/$REPO$BRANCH_WORD $ARCH classic
+rpm $ROOT/$REPO$BRANCH_WORD noarch classic
 EOF
     done
 done

@@ -8,7 +8,7 @@ ADD_BRANCH= # Add /branch to url
 BRANCH_WORD= # Branch word: "" or "/branch"
 ROOT="file:///space/ALT" # Place with ALT repositories
 #ROOT="http://ftp.altlinux.org/pub/distributions/ALTLinux"
-ARCHES="i586 x86_64 aarch64 ppc64le"
+ARCHES="i586 x86_64 aarch64 ppc64le armh"
 REPOS="p8 p9 Sisyphus"
 APT_DIR="${1:-apt}"
 

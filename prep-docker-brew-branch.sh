@@ -30,7 +30,7 @@ trap f_ctrl_c SIGINT
 
 f_arches_for_repo() {
     repo=$1
-    if [ "$repo" = p8 ]
+    if [ "$repo" = p8 ] || [ "$repo" = c8 ]
     then
         echo 'i586 x86_64'
     else
@@ -59,12 +59,18 @@ EOF
 uuidgen >/dev/null
 
 ALT_RELEASE="${1-}"
-if ! [[ "$ALT_RELEASE" =~ (p8|sisyphus) ]];
+if ! [[ "$ALT_RELEASE" =~ (p8|p9|c8|sisyphus) ]];
 then
     printf "ERROR: ALT_RELEASE missing or invalid\n"
     f_help
     exit 1
 fi
+
+case "$ALT_RELEASE" in
+    sisyphus) BRANDING=alt-sisyphus;;
+    c8) BRANDING=alt-spserver;;
+    *) BRANDING=alt-starterkit;;
+esac
 
 # Generate apt.conf and sources.list files
 ./gen-apt-files.sh "${temp_dir}/apt"
@@ -90,10 +96,11 @@ mkdir -p "$out_dir"
         NICE=1 \
         IMAGEDIR="${workspace_dir}" \
         ARCH="${arch}" \
-        "ve/docker-${ALT_RELEASE}.tar.xz"
+        BRANDING="$BRANDING" \
+        "ve/docker.tar.xz"
 
         mkdir -p "${out_dir}/${arch}"
-        mv "${workspace_dir}/docker-${ALT_RELEASE}-${DATE}-${arch}.tar.xz" "${out_dir}/${arch}/alt-${ALT_RELEASE}-${arch}-${DATE}.tar.xz"
+        mv "${workspace_dir}/docker-${DATE}-${arch}.tar.xz" "${out_dir}/${arch}/alt-${ALT_RELEASE}-${arch}-${DATE}.tar.xz"
         cat > ${out_dir}/${arch}/Dockerfile <<EOF
 FROM scratch
 

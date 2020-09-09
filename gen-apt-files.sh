@@ -4,13 +4,14 @@
 # repositories. Save it in the directory `apt' by default, but it can be
 # changed using firt command line argument.
 
-ADD_BRANCH= # Add /branch to url
+APT_DIR="${1:-apt}"
 BRANCH_WORD= # Branch word: "" or "/branch"
-ROOT="file:///space/ALT" # Place with ALT repositories
+ROOT="${2:-file:///space/ALT}" # Place with ALT repositories
 #ROOT="http://ftp.altlinux.org/pub/distributions/ALTLinux"
+# Use not empty ADD_BRANCH for some repos such as ftp
+ADD_BRANCH="${3-}" # Add /branch to url
 ARCHES="i586 x86_64 aarch64 ppc64le armh"
 REPOS="c8 p8 p9 Sisyphus"
-APT_DIR="${1:-apt}"
 
 mkdir -p "$APT_DIR"
 APT_DIR="$(realpath "$APT_DIR")"

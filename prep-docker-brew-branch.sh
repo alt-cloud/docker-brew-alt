@@ -52,6 +52,7 @@ DESCRIPTION
 
 EXAMPLE
     ${PROGNAME} p8
+    ${PROGNAME} sisyphus http://ftp.altlinux.org/pub/distributions/ALTLinux yes
 
 EOF
 }
@@ -66,6 +67,9 @@ then
     exit 1
 fi
 
+URL="${2-}"
+ADD_BRANCH="${3-}"
+
 case "$ALT_RELEASE" in
     sisyphus) BRANDING=alt-sisyphus;;
     c8) BRANDING=alt-spserver;;
@@ -73,7 +77,7 @@ case "$ALT_RELEASE" in
 esac
 
 # Generate apt.conf and sources.list files
-./gen-apt-files.sh "${temp_dir}/apt"
+./gen-apt-files.sh "${temp_dir}/apt" "$URL" "$ADD_BRANCH"
 
 # Build the image
 workspace_dir="${temp_dir}/workspace"

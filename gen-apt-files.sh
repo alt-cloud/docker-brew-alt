@@ -11,7 +11,7 @@ ROOT="${2:-file:///space/ALT}" # Place with ALT repositories
 # Use not empty ADD_BRANCH for some repos such as ftp
 ADD_BRANCH="${3-}" # Add /branch to url
 ARCHES="i586 x86_64 aarch64 ppc64le armh"
-REPOS="c8 p8 p9 Sisyphus"
+REPOS="c8 p8 p9 p10 Sisyphus"
 
 mkdir -p "$APT_DIR"
 APT_DIR="$(realpath "$APT_DIR")"

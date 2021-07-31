@@ -50,7 +50,7 @@ for branch in $(f_branches); do
         branch_lower="$(echo $branch | tr A-Z a-z)"
         echo $branch $arch $branch_lower
         mkdir -p "${out_dir}/${arch}"
-        curl "$URL/$branch/cloud/alt-$branch_lower-$IMAGE-$arch.tar.xz" \
+        curl "$URL/$branch/cloud/$arch/alt-$branch_lower-$IMAGE-$arch.tar.xz" \
              > "$out_dir/$arch/alt-$branch_lower-$arch.tar.xz"
         cat > ${out_dir}/${arch}/Dockerfile <<EOF
 FROM scratch

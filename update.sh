@@ -39,7 +39,7 @@ f_arches_for_branch() {
 }
 
 f_branches() {
-    echo Sisyphus p8 p9
+    echo Sisyphus p8 p9 p10
 }
 
 out_dir="${temp_dir}/out"

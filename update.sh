@@ -30,11 +30,8 @@ f_arches_for_branch() {
     if [ "$branch" = p8 ]
     then
         echo 'i586 x86_64'
-    elif [ "$branch" = p9 ]
-    then
-        echo 'i586 x86_64 aarch64 ppc64le'
     else
-        echo 'i586 x86_64 aarch64 ppc64le'
+        echo 'i586 x86_64 armh aarch64 ppc64le'
     fi
 }
 

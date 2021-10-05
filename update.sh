@@ -27,16 +27,11 @@ trap f_ctrl_c SIGINT
 
 f_arches_for_branch() {
     branch=$1
-    if [ "$branch" = p8 ]
-    then
-        echo 'i586 x86_64'
-    else
-        echo 'i586 x86_64 armh aarch64 ppc64le'
-    fi
+    echo 'i586 x86_64 armh aarch64 ppc64le'
 }
 
 f_branches() {
-    echo Sisyphus p8 p9 p10
+    echo Sisyphus p9 p10
 }
 
 out_dir="${temp_dir}/out"

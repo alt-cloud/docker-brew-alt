@@ -6,7 +6,7 @@
 
 APT_DIR="${1:-apt}"
 BRANCH_WORD= # Branch word: "" or "/branch"
-ROOT="${2:-file:///space/ALT}" # Place with ALT repositories
+ROOT="${2:-copy:/space/ALT}" # Place with ALT repositories
 #ROOT="http://ftp.altlinux.org/pub/distributions/ALTLinux"
 # Use not empty ADD_BRANCH for some repos such as ftp
 ADD_BRANCH="${3-}" # Add /branch to url

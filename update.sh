@@ -31,7 +31,7 @@ f_arches_for_branch() {
 }
 
 f_branches() {
-    echo Sisyphus p9 p10
+    echo Sisyphus p10 p11
 }
 
 out_dir="${temp_dir}/out"
@@ -49,7 +49,7 @@ FROM scratch
 
 MAINTAINER \\
 [Alexey Shabalin <shaba@altlinux.org>] \\
-[Mikhail Gordeev <obirvalger@altlinux.org]
+[Nadezhda Fedorova <fedor@altlinux.org]
 
 ADD alt-$branch_lower-$arch.tar.xz /
 

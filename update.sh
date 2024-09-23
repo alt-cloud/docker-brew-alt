@@ -44,6 +44,11 @@ for branch in $(f_branches); do
         mkdir -p "${out_dir}/${arch}"
         curl "$URL/$branch/cloud/$arch/alt-$branch_lower-$IMAGE-$arch.tar.xz" \
              > "$out_dir/$arch/alt-$branch_lower-$arch.tar.xz"
+
+	case "$branch_lower" in 
+		p*) lic="ALT-Container or GPLv3";;
+		*) lic="GPLv3";;
+	esac
         cat > ${out_dir}/${arch}/Dockerfile <<EOF
 FROM scratch
 
@@ -51,7 +56,7 @@ MAINTAINER \\
 [Alexey Shabalin <shaba@altlinux.org>] \\
 [Nadezhda Fedorova <fedor@altlinux.org]
 
-LABEL org.opencontainers.image.licenses="GPLv3"
+LABEL org.opencontainers.image.licenses="$lic"
 
 ADD alt-$branch_lower-$arch.tar.xz /
 

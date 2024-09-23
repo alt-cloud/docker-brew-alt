@@ -51,6 +51,8 @@ MAINTAINER \\
 [Alexey Shabalin <shaba@altlinux.org>] \\
 [Nadezhda Fedorova <fedor@altlinux.org]
 
+LABEL org.opencontainers.image.licenses="GPLv3"
+
 ADD alt-$branch_lower-$arch.tar.xz /
 
 RUN true > /etc/security/limits.d/50-defaults.conf

@@ -27,7 +27,11 @@ trap f_ctrl_c SIGINT
 
 f_arches_for_branch() {
     branch=$1
-    echo 'i586 x86_64 aarch64'
+    if [ "$branch" = Sisyphus ]; then
+    	echo 'i586 x86_64 aarch64 riscv64'
+    else
+	echo 'i586 x86_64 aarch64'
+    fi
 }
 
 f_branches() {

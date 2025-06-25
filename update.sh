@@ -58,7 +58,7 @@ FROM scratch
 
 MAINTAINER \\
 [Alexey Shabalin <shaba@altlinux.org>] \\
-[Nadezhda Fedorova <fedor@altlinux.org]
+[Nadezhda Fedorova <fedor@altlinux.org>]
 
 LABEL org.opencontainers.image.licenses="$lic"
 

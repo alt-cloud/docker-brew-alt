@@ -1,0 +1,14 @@
+FROM scratch
+
+LABEL org.opencontainers.image.authors="Alexey Shabalin <shaba@altlinux.org>,Nadezhda Fedorova <fedor@altlinux.org>" \
+org.opencontainers.image.licenses="GPLv3" \
+org.opencontainers.image.title="alt" \
+org.opencontainers.image.description="Minimal image" \
+org.opencontainers.image.vendor="ALT Linux Team"
+
+ADD alt-sisyphus-x86_64.tar.xz /
+
+RUN true > /etc/security/limits.d/50-defaults.conf
+
+# overwrite this with 'CMD []' in a dependent Dockerfile
+CMD ["/bin/bash"]

@@ -56,11 +56,8 @@ for branch in $(f_branches); do
         cat > ${out_dir}/${arch}/Dockerfile <<EOF
 FROM scratch
 
-MAINTAINER \\
-[Alexey Shabalin <shaba@altlinux.org>] \\
-[Nadezhda Fedorova <fedor@altlinux.org>]
-
-LABEL org.opencontainers.image.licenses="$lic" \\
+LABEL org.opencontainers.image.authors="Alexey Shabalin <shaba@altlinux.org>,Nadezhda Fedorova <fedor@altlinux.org>" \\
+org.opencontainers.image.licenses="$lic" \\
 org.opencontainers.image.title="alt" \\
 org.opencontainers.image.description="Minimal image" \\
 org.opencontainers.image.vendor="ALT Linux Team"
